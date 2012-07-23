@@ -24,9 +24,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Linq;
 using Mono.TextEditor;
 using MonoDevelop.Ide;
-using MonoDevelop.Bookmarks.Helpers;
 
 namespace MonoDevelop.Bookmarks
 {
@@ -38,16 +38,12 @@ namespace MonoDevelop.Bookmarks
 		{
 			Bookmark = bookmark;
 		}
-//
-//		public BookmarkType BookmarkType { get; set; }
-//
-//		public int Number { get; set; }
 
 		#region IIconBarMarker implementation
 
 		public void DrawIcon (TextEditor editor, Cairo.Context cr, DocumentLine lineSegment, int lineNumber, double x, double y, double width, double height)
 		{
-			if (DocumentLineHelper.IsLineHasBookMark(lineSegment)) {
+			if (BookmarkService.CheckLineForBookmark(editor.FileName, lineSegment.LineNumber)) {
 				Cairo.Color color1 = editor.ColorStyle.BookmarkColor1;
 				Cairo.Color color2 = editor.ColorStyle.BookmarkColor2;
 				

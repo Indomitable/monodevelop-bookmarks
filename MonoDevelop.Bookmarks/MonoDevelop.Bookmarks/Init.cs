@@ -1,5 +1,5 @@
 //
-// DocumentLineHelper.cs
+// Init.cs
 //
 // Author:
 //       vmladenov <ventsislav.mladenov@gmail.com>
@@ -24,26 +24,17 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Linq;
-using Mono.TextEditor;
-using MonoDevelop.Bookmarks;
+using MonoDevelop.Components.Commands;
+using MonoDevelop.Ide;
 
-namespace MonoDevelop.Bookmarks.Helpers
+namespace MonoDevelop.Bookmarks
 {
-	public static class DocumentLineHelper
-	{
-		public static bool IsLineHasBookMark (DocumentLine docLine)
-		{
-			return GetBookmark(docLine) != null;
-		}
-
-		public static NumberBookmarkMarker GetBookmark (DocumentLine docLine)
-		{
-			var markers = docLine.Markers;
-			if (markers == null)
-				return null;
-			return markers.OfType<NumberBookmarkMarker>().FirstOrDefault ();
-		}
-	}
+    public class Init : CommandHandler
+    {
+        protected override void Run()
+        {
+            BookmarkService.Init();        
+        }
+    }
 }
 

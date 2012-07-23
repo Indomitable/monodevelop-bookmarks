@@ -33,34 +33,74 @@ namespace MonoDevelop.Bookmarks.Tests.Bookmarks
 	[TestFixture]
 	public class CommandHandlersTest
 	{
-		public int GetBookmarkNumber(SetBookmarkHandler ch)
-		{
-			return 1;
-		}
-
 		[Test]
-		public void SetCommandNumbers()
+		public void SetLocalCommandNumbers()
 		{
 			SetBookmarkHandler ch = new SetLocalBookmarkHandler0();
 			Assert.AreEqual(0, ch.BookmarkNumber);
+			Assert.AreEqual(BookmarkType.Local, ch.BookmarkType);
 			ch = new SetLocalBookmarkHandler1();
 			Assert.AreEqual(1, ch.BookmarkNumber);
+			Assert.AreEqual(BookmarkType.Local, ch.BookmarkType);
 			ch = new SetLocalBookmarkHandler2();
 			Assert.AreEqual(2, ch.BookmarkNumber);
+			Assert.AreEqual(BookmarkType.Local, ch.BookmarkType);
 			ch = new SetLocalBookmarkHandler3();
 			Assert.AreEqual(3, ch.BookmarkNumber);
+			Assert.AreEqual(BookmarkType.Local, ch.BookmarkType);
 			ch = new SetLocalBookmarkHandler4();
 			Assert.AreEqual(4, ch.BookmarkNumber);
+			Assert.AreEqual(BookmarkType.Local, ch.BookmarkType);
 			ch = new SetLocalBookmarkHandler5();
 			Assert.AreEqual(5, ch.BookmarkNumber);
+			Assert.AreEqual(BookmarkType.Local, ch.BookmarkType);
 			ch = new SetLocalBookmarkHandler6();
 			Assert.AreEqual(6, ch.BookmarkNumber);
+			Assert.AreEqual(BookmarkType.Local, ch.BookmarkType);
 			ch = new SetLocalBookmarkHandler7();
 			Assert.AreEqual(7, ch.BookmarkNumber);
+			Assert.AreEqual(BookmarkType.Local, ch.BookmarkType);
 			ch = new SetLocalBookmarkHandler8();
 			Assert.AreEqual(8, ch.BookmarkNumber);
+			Assert.AreEqual(BookmarkType.Local, ch.BookmarkType);
 			ch = new SetLocalBookmarkHandler9();
 			Assert.AreEqual(9, ch.BookmarkNumber);
+			Assert.AreEqual(BookmarkType.Local, ch.BookmarkType);
+		}
+
+		[Test]
+		public void GoToLocalCommandNumbers()
+		{
+			GoToBookmarkHandler ch = new GoToLocalBookmarkHandler0();
+			Assert.AreEqual(0, ch.BookmarkNumber);
+			Assert.AreEqual(BookmarkType.Local, ch.BookmarkType);
+			ch = new GoToLocalBookmarkHandler1();
+			Assert.AreEqual(1, ch.BookmarkNumber);
+			Assert.AreEqual(BookmarkType.Local, ch.BookmarkType);
+			ch = new GoToLocalBookmarkHandler2();
+			Assert.AreEqual(2, ch.BookmarkNumber);
+			Assert.AreEqual(BookmarkType.Local, ch.BookmarkType);
+			ch = new GoToLocalBookmarkHandler3();
+			Assert.AreEqual(3, ch.BookmarkNumber);
+			Assert.AreEqual(BookmarkType.Local, ch.BookmarkType);
+			ch = new GoToLocalBookmarkHandler4();
+			Assert.AreEqual(4, ch.BookmarkNumber);
+			Assert.AreEqual(BookmarkType.Local, ch.BookmarkType);
+			ch = new GoToLocalBookmarkHandler5();
+			Assert.AreEqual(5, ch.BookmarkNumber);
+			Assert.AreEqual(BookmarkType.Local, ch.BookmarkType);
+			ch = new GoToLocalBookmarkHandler6();
+			Assert.AreEqual(6, ch.BookmarkNumber);
+			Assert.AreEqual(BookmarkType.Local, ch.BookmarkType);
+			ch = new GoToLocalBookmarkHandler7();
+			Assert.AreEqual(7, ch.BookmarkNumber);
+			Assert.AreEqual(BookmarkType.Local, ch.BookmarkType);
+			ch = new GoToLocalBookmarkHandler8();
+			Assert.AreEqual(8, ch.BookmarkNumber);
+			Assert.AreEqual(BookmarkType.Local, ch.BookmarkType);
+			ch = new GoToLocalBookmarkHandler9();
+			Assert.AreEqual(9, ch.BookmarkNumber);
+			Assert.AreEqual(BookmarkType.Local, ch.BookmarkType);
 		}
 	}
 }

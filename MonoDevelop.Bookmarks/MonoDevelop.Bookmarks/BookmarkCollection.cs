@@ -24,15 +24,90 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Linq;
 using System.Collections.Generic;
+using System.Xml;
+using MonoDevelop.Ide.Gui;
+using Mono.TextEditor;
+using MonoDevelop.Projects.Text;
 
 namespace MonoDevelop.Bookmarks
 {
-	public class BookmarkCollection : List<NumberBookmark>
-	{
-		public BookmarkCollection ()
-		{
-		}
-	}
+    public class BookmarkCollection : List<NumberBookmark>
+    {
+        public BookmarkCollection()
+        {
+        }
+
+        public XmlElement ToXml()
+        {
+            XmlDocument doc = new XmlDocument();
+            XmlElement elem = doc.CreateElement("BookmarkCollection");
+            foreach (NumberBookmark bookmark in this)
+            {
+                elem.AppendChild(bookmark.ToXml(doc));
+            }
+            return elem;
+        }
+
+        public void Load(XmlElement root)
+        {
+            this.Clear();
+            foreach (XmlElement child in root.ChildNodes)
+            {
+                this.Add(NumberBookmark.FromXml(child));
+            }
+        }
+
+        public void InitBookmarksForDocument(Document document)
+        {
+            if (document == null)
+                return;
+            var textEditor = document.GetContent<ITextEditorDataProvider>();
+            if (textEditor == null)
+                return;
+            var editor = textEditor.GetTextEditorData();
+            if (editor == null)
+                return;
+            var fileName = document.FileName;
+            if (this.Any(b => b.FileName == fileName))
+            {
+                foreach (var bookmark in this.Where(x => x.FileName == fileName))
+                {
+                    var line = editor.GetLine(bookmark.LineNumber);
+                    if (line == null)
+                        continue;
+                    editor.Document.AddMarker(line, new NumberBookmarkMarker(bookmark));
+                    editor.Document.RequestUpdate(new LineUpdate(bookmark.LineNumber));
+                }
+                editor.Document.CommitDocumentUpdate();
+            }
+        }
+
+        public void FixLineNumbers(LineCountEventArgs arg)
+        {
+            if (arg.TextFile == null)
+                return;
+            var markedForRemove = new List<NumberBookmark>();
+            foreach (var bookmark in this.Where(x => x.FileName == arg.TextFile.Name))
+            {
+                if (bookmark.LineNumber > arg.LineNumber)
+                {
+                    if (bookmark.LineNumber + arg.LineCount >= arg.LineNumber)
+                    {
+                        bookmark.LineNumber = bookmark.LineNumber + arg.LineCount;
+                    }
+                    else
+                        markedForRemove.Add(bookmark);
+                }
+                else
+                    markedForRemove.Add(bookmark);
+            }
+            foreach (var b in markedForRemove)
+            {
+                this.Remove(b);
+            }
+        }
+    }
 }
 

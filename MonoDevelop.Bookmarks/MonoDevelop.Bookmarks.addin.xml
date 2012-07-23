@@ -40,4 +40,8 @@
 		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToLocalBookmark9" defaultHandler="MonoDevelop.Bookmarks.GoToLocalBookmarkHandler9" _label = "GoTo Local Bookmark 1" shortcut = "Control+9" />
 		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToLocalBookmark0" defaultHandler="MonoDevelop.Bookmarks.GoToLocalBookmarkHandler0" _label = "GoTo Local Bookmark 1" shortcut = "Control+0" />
 	</Extension>
+	
+	<Extension path = "/MonoDevelop/Ide/StartupHandlers">
+		<Class class="MonoDevelop.Bookmarks.Init" />
+	</Extension>
 </Addin>

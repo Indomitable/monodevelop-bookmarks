@@ -41,6 +41,9 @@ namespace MonoDevelop.Bookmarks.Tests
 			var bookMark = new NumberBookmark();
 			bookMark.FileName = "TestFile.cs";
 			bookMark.LineNumber = 29;
+			bookMark.Column = 10;
+			bookMark.BookmarkType = BookmarkType.Global;
+			bookMark.Number = 4;
 			XmlElement element = bookMark.ToXml(doc);
 
 			StringBuilder builder = new StringBuilder();
@@ -51,7 +54,8 @@ namespace MonoDevelop.Bookmarks.Tests
 			XmlWriter writer = XmlWriter.Create(builder, settings);
 			element.WriteTo(writer);
 			writer.Flush();
-			Assert.AreEqual("<NumberBookmark FileName=\"TestFile.cs\" LineNumber=\"29\" />", builder.ToString());
+			string value = "<NumberBookmark Type=\"1\" Number=\"4\" FileName=\"TestFile.cs\" LineNumber=\"29\" Column=\"10\" />";
+			Assert.AreEqual(value, builder.ToString());
 		}
 
 		[Test]
@@ -61,45 +65,15 @@ namespace MonoDevelop.Bookmarks.Tests
 			XmlElement element = doc.CreateElement("NumberBookmark");
 			element.SetAttribute("FileName", "TestFile12.cs");
 			element.SetAttribute("LineNumber", "10");
+			element.SetAttribute("Type", "0");
+			element.SetAttribute("Number", "5");
+			element.SetAttribute("Column", "24");
 			var bookmark = NumberBookmark.FromXml(element);
 			Assert.AreEqual("TestFile12.cs", bookmark.FileName);
-			//Assert.AreEqual(10, bookmark.LineNumber);
-		}
-
-		[Test]
-		public void FromXmlWrongAttributes()
-		{
-			XmlDocument doc = new XmlDocument();
-			//Wrong Element Name
-			XmlElement element = doc.CreateElement("NumberBookmark1");
-			element.SetAttribute("FileName", "TestFile12.cs");
-			element.SetAttribute("LineNumber", "10");
-			var bookmark = NumberBookmark.FromXml(element);
-			Assert.IsNull(bookmark);
-
-			element = doc.CreateElement("NumberBookmark");
-			bookmark = NumberBookmark.FromXml(element);
-			Assert.IsNull(bookmark);
-
-			//Wrong FileName Name
-			element.SetAttribute("FileName1", "TestFile12.cs");
-			bookmark = NumberBookmark.FromXml(element);
-			Assert.IsNull(bookmark);
-
-			//FileName without LineNumber
-			element.SetAttribute("FileName", "TestFile34.cs");
-			bookmark = NumberBookmark.FromXml(element);
-			Assert.IsNull(bookmark);
-
-			//FileName with wrong LineNumber name
-			element.SetAttribute("LineNumber2", "10");
-			bookmark = NumberBookmark.FromXml(element);
-			Assert.IsNull(bookmark);
-
-			element.SetAttribute("LineNumber", "20");
-			bookmark = NumberBookmark.FromXml(element);
-			Assert.AreEqual("TestFile34.cs", bookmark.FileName);
-			//Assert.AreEqual(20, bookmark.LineNumber);
+			Assert.AreEqual(10, bookmark.LineNumber);
+			Assert.AreEqual(BookmarkType.Local, bookmark.BookmarkType);
+			Assert.AreEqual(5, bookmark.Number);
+			Assert.AreEqual(24, bookmark.Column);
 		}
 
 		[Test]
@@ -109,18 +83,11 @@ namespace MonoDevelop.Bookmarks.Tests
 			//Wrong Element Name
 			XmlElement element = doc.CreateElement("NumberBookmark");
 			element.SetAttribute("FileName", "");
-			element.SetAttribute("LineNumber", "10");
+			element.SetAttribute("LineNumber", "");
+			element.SetAttribute("Type", "");
+			element.SetAttribute("Number", "");
+			element.SetAttribute("Column", "");
 			var bookmark = NumberBookmark.FromXml(element);
-			Assert.IsNull(bookmark);
-
-			element.SetAttribute("FileName", "dsfs");
-			element.SetAttribute("LineNumber", "");
-			bookmark = NumberBookmark.FromXml(element);
-			Assert.IsNull(bookmark);
-
-			element.SetAttribute("FileName", "");
-			element.SetAttribute("LineNumber", "");
-			bookmark = NumberBookmark.FromXml(element);
 			Assert.IsNull(bookmark);
 		}
 	}
