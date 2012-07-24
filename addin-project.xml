@@ -1,0 +1,7 @@
+<AddinProject appVersion="3.0">
+	<Project>
+		<AddinFile>MonoDevelop.Bookmarks/bin/Debug/MonoDevelop.Bookmarks.dll</AddinFile>
+		<BuildFile>MonoDevelop.Bookmarks.sln</BuildFile>
+		<BuildConfiguration>Debug</BuildConfiguration>
+	</Project>
+</AddinProject>
