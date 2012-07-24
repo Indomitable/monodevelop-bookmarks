@@ -43,11 +43,13 @@ namespace MonoDevelop.Bookmarks
 
 		public void DrawIcon (TextEditor editor, Cairo.Context cr, DocumentLine lineSegment, int lineNumber, double x, double y, double width, double height)
 		{
-			if (BookmarkService.CheckLineForBookmark(editor.FileName, lineSegment.LineNumber)) {
+            if (BookmarkService.Instance.CheckLineForBookmark(editor.FileName, lineSegment.LineNumber)) {
 				Cairo.Color color1 = editor.ColorStyle.BookmarkColor1;
 				Cairo.Color color2 = editor.ColorStyle.BookmarkColor2;
 				
 				DrawRoundRectangle (cr, x + 1, y + 1, 8, width - 4, height - 4);
+
+
 				using (var pat = new Cairo.LinearGradient (x + width / 4, y, x + width / 2, y + height - 4)) {
 					pat.AddColorStop (0, color1);
 					pat.AddColorStop (1, color2);

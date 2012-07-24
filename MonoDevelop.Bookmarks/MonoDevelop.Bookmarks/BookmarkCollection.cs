@@ -30,6 +30,7 @@ using System.Xml;
 using MonoDevelop.Ide.Gui;
 using Mono.TextEditor;
 using MonoDevelop.Projects.Text;
+using System.IO;
 
 namespace MonoDevelop.Bookmarks
 {
@@ -55,7 +56,26 @@ namespace MonoDevelop.Bookmarks
             this.Clear();
             foreach (XmlElement child in root.ChildNodes)
             {
-                this.Add(NumberBookmark.FromXml(child));
+                var bookmark = NumberBookmark.FromXml(child);
+                TryGetLineContent(bookmark);
+                this.Add(bookmark);
+            }
+        }
+
+        private void TryGetLineContent(NumberBookmark bookmark)
+        {
+            try
+            {
+                var fileName = Path.GetFullPath(bookmark.FileName);
+                if (File.Exists(fileName))
+                {
+                    var lines = File.ReadAllLines(fileName);
+                    if (lines.Length > bookmark.LineNumber)
+                        bookmark.LineContent = lines[bookmark.LineNumber - 1].Trim();
+                }
+            } catch
+            {
+                bookmark.LineContent = string.Empty;
             }
         }
 
@@ -96,12 +116,9 @@ namespace MonoDevelop.Bookmarks
                     if (bookmark.LineNumber + arg.LineCount >= arg.LineNumber)
                     {
                         bookmark.LineNumber = bookmark.LineNumber + arg.LineCount;
-                    }
-                    else
+                    } else
                         markedForRemove.Add(bookmark);
                 }
-                else
-                    markedForRemove.Add(bookmark);
             }
             foreach (var b in markedForRemove)
             {

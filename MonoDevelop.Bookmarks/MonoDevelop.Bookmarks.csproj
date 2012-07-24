@@ -69,6 +69,7 @@
     <Compile Include="MonoDevelop.Bookmarks\NumberBookmarkMarker.cs" />
     <Compile Include="MonoDevelop.Bookmarks\SetBookmarkHandler.cs" />
     <Compile Include="MonoDevelop.Bookmarks\Init.cs" />
+    <Compile Include="MonoDevelop.Bookmarks\CellRendererBookmark.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MonoDevelop.Bookmarks.addin.xml">

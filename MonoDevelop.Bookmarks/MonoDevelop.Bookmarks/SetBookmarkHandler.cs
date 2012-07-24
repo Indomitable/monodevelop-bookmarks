@@ -41,7 +41,8 @@ namespace MonoDevelop.Bookmarks
             var editor = IdeApp.Workbench.ActiveDocument.Editor;
             var currentLine = editor.GetLineByOffset(editor.Caret.Offset);
             NumberBookmark bookmark = new NumberBookmark(editor.FileName, currentLine.LineNumber, editor.Caret.Column, BookmarkNumber, BookmarkType);
-            BookmarkService.AddBookmark(bookmark);
+            bookmark.LineContent = editor.GetLineText(currentLine.LineNumber).Trim();
+            BookmarkService.Instance.AddBookmark(bookmark);
         }
         
         protected override void Update(CommandInfo info)

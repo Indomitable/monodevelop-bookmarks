@@ -35,43 +35,42 @@ namespace Bookmarks
 		[SetUp]
 		public void Init()
 		{
-			BookmarkService.Clear();
+			BookmarkService.Instance.Clear();
 		}
 
 		[Test]
 		public void AddBookmark1()
 		{
 			NumberBookmark bookmark = new NumberBookmark("TestPath.cs", 10, 4, 2, BookmarkType.Local);
-			BookmarkService.AddBookmark(bookmark);
+			BookmarkService.Instance.AddBookmark(bookmark);
 
-			Assert.AreEqual(1, BookmarkService.BookmarkCount);
+			Assert.AreEqual(1, BookmarkService.Instance.BookmarkCount);
 
 			bookmark = new NumberBookmark("TestPath.cs", 15, 20, 2, BookmarkType.Local);
-			BookmarkService.AddBookmark(bookmark);
-			Assert.AreEqual(1, BookmarkService.BookmarkCount);
+			BookmarkService.Instance.AddBookmark(bookmark);
+			Assert.AreEqual(1, BookmarkService.Instance.BookmarkCount);
 
-			var bookmarkCheck = BookmarkService.GetBookmarkLocal("TestPath.cs", 2);
+			var bookmarkCheck = BookmarkService.Instance.GetBookmarkLocal("TestPath.cs", 2);
 			Assert.AreEqual(15, bookmarkCheck.LineNumber);
 			Assert.AreEqual(20, bookmarkCheck.Column);
 		}
-
 
 		[Test]
 		public void AddBookmark2()
 		{
 			NumberBookmark bookmark = new NumberBookmark("TestPath.cs", 10, 4, 2, BookmarkType.Local);
-			BookmarkService.AddBookmark(bookmark);
+			BookmarkService.Instance.AddBookmark(bookmark);
 			
-			Assert.AreEqual(1, BookmarkService.BookmarkCount);
+			Assert.AreEqual(1, BookmarkService.Instance.BookmarkCount);
 			
 			bookmark = new NumberBookmark("TestPath.cs", 10, 20, 2, BookmarkType.Global);
-			BookmarkService.AddBookmark(bookmark);
-			Assert.AreEqual(1, BookmarkService.BookmarkCount);
+			BookmarkService.Instance.AddBookmark(bookmark);
+			Assert.AreEqual(1, BookmarkService.Instance.BookmarkCount);
 			
-			var bookmarkCheck = BookmarkService.GetBookmarkLocal("TestPath.cs", 2);
+			var bookmarkCheck = BookmarkService.Instance.GetBookmarkLocal("TestPath.cs", 2);
 			Assert.IsNull(bookmarkCheck);
 
-			bookmarkCheck = BookmarkService.GetBookmarkGlobal(2);
+			bookmarkCheck = BookmarkService.Instance.GetBookmarkGlobal(2);
 			Assert.AreEqual(10, bookmarkCheck.LineNumber);
 			Assert.AreEqual(20, bookmarkCheck.Column);
 		}
@@ -80,20 +79,82 @@ namespace Bookmarks
 		public void AddBookmark3()
 		{
 			NumberBookmark bookmark = new NumberBookmark("TestPath1SAD.cs", 10, 4, 3, BookmarkType.Global);
-			BookmarkService.AddBookmark(bookmark);
+			BookmarkService.Instance.AddBookmark(bookmark);
 			
-			Assert.AreEqual(1, BookmarkService.BookmarkCount);
+			Assert.AreEqual(1, BookmarkService.Instance.BookmarkCount);
 			
 			bookmark = new NumberBookmark("TestPath.cs", 40, 20, 3, BookmarkType.Global);
-			BookmarkService.AddBookmark(bookmark);
+			BookmarkService.Instance.AddBookmark(bookmark);
 
-			Assert.AreEqual(1, BookmarkService.BookmarkCount);
+			Assert.AreEqual(1, BookmarkService.Instance.BookmarkCount);
 			
-			var bookmarkCheck = BookmarkService.GetBookmarkGlobal(3);
+			var bookmarkCheck = BookmarkService.Instance.GetBookmarkGlobal(3);
 			Assert.AreEqual(40, bookmarkCheck.LineNumber);
 			Assert.AreEqual(20, bookmarkCheck.Column);
 			Assert.AreEqual("TestPath.cs", bookmark.FileName);
 		}
+
+		[Test]
+		public void AddBookmark4()
+		{
+			NumberBookmark bookmark = new NumberBookmark("TestPath.cs", 15, 4, 2, BookmarkType.Local);
+			BookmarkService.Instance.AddBookmark(bookmark);
+			
+			Assert.AreEqual(1, BookmarkService.Instance.BookmarkCount);
+			
+			bookmark = new NumberBookmark("TestPath.cs", 15, 20, 2, BookmarkType.Local);
+			BookmarkService.Instance.AddBookmark(bookmark);
+			Assert.AreEqual(0, BookmarkService.Instance.BookmarkCount);
+		}
+
+		[Test]
+		public void AddBookmark5()
+		{
+			NumberBookmark bookmark = new NumberBookmark("TestPath.cs", 15, 4, 5, BookmarkType.Local);
+			BookmarkService.Instance.AddBookmark(bookmark);
+			
+			Assert.AreEqual(1, BookmarkService.Instance.BookmarkCount);
+			
+			bookmark = new NumberBookmark("TestPath.cs", 15, 20, 5, BookmarkType.Global);
+			BookmarkService.Instance.AddBookmark(bookmark);
+			Assert.AreEqual(1, BookmarkService.Instance.BookmarkCount);
+
+			var bookmarkCheck = BookmarkService.Instance.GetBookmarkGlobal(5);
+			Assert.AreEqual(15, bookmarkCheck.LineNumber);
+			Assert.AreEqual(20, bookmarkCheck.Column);
+			Assert.AreEqual("TestPath.cs", bookmark.FileName);
+		}
+
+		[Test]
+		public void AddBookmark6()
+		{
+			NumberBookmark bookmark = new NumberBookmark("TestPath.cs", 10, 4, 2, BookmarkType.Local);
+			BookmarkService.Instance.AddBookmark(bookmark);
+			
+			Assert.AreEqual(1, BookmarkService.Instance.BookmarkCount);
+			
+			bookmark = new NumberBookmark("TestPath.cs", 15, 20, 3, BookmarkType.Local);
+			BookmarkService.Instance.AddBookmark(bookmark);
+			Assert.AreEqual(2, BookmarkService.Instance.BookmarkCount);
+			
+			var bookmarkCheck = BookmarkService.Instance.GetBookmarkLocal("TestPath.cs", 3);
+			Assert.AreEqual(15, bookmarkCheck.LineNumber);
+			Assert.AreEqual(20, bookmarkCheck.Column);
+		}
+
+		[Test]
+		public void AddBookmark7()
+		{
+			NumberBookmark bookmark = new NumberBookmark("TestPath.cs", 20,17, 6, BookmarkType.Global);
+			BookmarkService.Instance.AddBookmark(bookmark);
+			
+			Assert.AreEqual(1, BookmarkService.Instance.BookmarkCount);
+			
+			bookmark = new NumberBookmark("TestPath.cs", 20, 5, 6, BookmarkType.Global);
+			BookmarkService.Instance.AddBookmark(bookmark);
+			Assert.AreEqual(0, BookmarkService.Instance.BookmarkCount);
+		}
+
 	}
 }
 

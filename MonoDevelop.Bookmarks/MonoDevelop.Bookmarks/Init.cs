@@ -33,7 +33,7 @@ namespace MonoDevelop.Bookmarks
     {
         protected override void Run()
         {
-            BookmarkService.Init();        
+            BookmarkService.Instance.Init();        
         }
     }
 }

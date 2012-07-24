@@ -62,8 +62,8 @@ namespace MonoDevelop.Bookmarks
 
 		private Tuple<DocumentLine, NumberBookmark> GetLineWithBookmark(TextEditorData editor)
 		{
-            var bookmark = BookmarkType == BookmarkType.Local ? BookmarkService.GetBookmarkLocal(editor.FileName, this.BookmarkNumber) :
-                                                                BookmarkService.GetBookmarkGlobal(this.BookmarkNumber);
+            var bookmark = BookmarkType == BookmarkType.Local ? BookmarkService.Instance.GetBookmarkLocal(editor.FileName, this.BookmarkNumber) :
+                                                                BookmarkService.Instance.GetBookmarkGlobal(this.BookmarkNumber);
             if (bookmark == null)
                 return null;
             return new Tuple<DocumentLine, NumberBookmark>(editor.GetLine(bookmark.LineNumber), bookmark);
