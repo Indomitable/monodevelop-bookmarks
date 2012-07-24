@@ -43,8 +43,8 @@ namespace MonoDevelop.Bookmarks
 			var activeDocument = IdeApp.Workbench.ActiveDocument;
             var textEditor = activeDocument.GetContent<ITextEditorDataProvider>();
             var data = GetLineWithBookmark(textEditor.GetTextEditorData());
-            activeDocument.Editor.Caret.Offset = data.Item1.Offset;
-			activeDocument.Editor.Caret.Column = data.Item2.Column;
+
+            activeDocument.Editor.SetCaretTo(data.Item1.LineNumber, data.Item2.Column, true, true);
 		}
 		
 		protected override void Update (CommandInfo info)
