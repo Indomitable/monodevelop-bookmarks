@@ -27,7 +27,7 @@ using System;
 using NUnit.Framework;
 using MonoDevelop.Bookmarks;
 
-namespace Bookmarks
+namespace MonoDevelop.Bookmarks.Tests
 {
 	[TestFixture]
 	public class BookmarkStoreTest

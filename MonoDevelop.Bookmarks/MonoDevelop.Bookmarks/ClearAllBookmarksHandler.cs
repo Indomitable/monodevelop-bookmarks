@@ -1,5 +1,5 @@
 //
-// BookmarkCommands.cs
+// ClearAllBookmarksHandler.cs
 //
 // Author:
 //       vmladenov <ventsislav.mladenov@gmail.com>
@@ -23,57 +23,31 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
+using System.Linq;
+using MonoDevelop.Components.Commands;
 
 namespace MonoDevelop.Bookmarks
 {
-	public enum BookmarkCommands
-	{
-		SetLocalBookmark1,
-		SetLocalBookmark2,
-		SetLocalBookmark3,
-		SetLocalBookmark4,
-		SetLocalBookmark5,
-		SetLocalBookmark6,
-		SetLocalBookmark7,
-		SetLocalBookmark8,
-		SetLocalBookmark9,
-		SetLocalBookmark0,
-		
-		GoToLocalBookmark1,
-		GoToLocalBookmark2,
-		GoToLocalBookmark3,
-		GoToLocalBookmark4,
-		GoToLocalBookmark5,
-		GoToLocalBookmark6,
-		GoToLocalBookmark7,
-		GoToLocalBookmark8,
-		GoToLocalBookmark9,
-		GoToLocalBookmark0,
+    public class ClearAllBookmarksHandler : CommandHandler
+    {
+        protected override void Run()
+        {
+            while(BookmarkService.Instance.BookmarkCount > 0)
+            {
+                var bookmark = BookmarkService.Instance.Bookmarks.First();
+                BookmarkService.Instance.DeleteBookmark(bookmark);
+            }
+        }
 
-		SetGlobalBookmark1,
-		SetGlobalBookmark2,
-		SetGlobalBookmark3,
-		SetGlobalBookmark4,
-		SetGlobalBookmark5,
-		SetGlobalBookmark6,
-		SetGlobalBookmark7,
-		SetGlobalBookmark8,
-		SetGlobalBookmark9,
-		SetGlobalBookmark0,
-		
-		GoToGlobalBookmark1,
-		GoToGlobalBookmark2,
-		GoToGlobalBookmark3,
-		GoToGlobalBookmark4,
-		GoToGlobalBookmark5,
-		GoToGlobalBookmark6,
-		GoToGlobalBookmark7,
-		GoToGlobalBookmark8,
-		GoToGlobalBookmark9,
-		GoToGlobalBookmark0,
+        protected override void Update(CommandInfo info)
+        {
+            info.Enabled = BookmarkService.Instance.BookmarkCount > 0;
+        }
 
-        ClearAllBookmarks,
-	}
+        internal void RunTest()
+        {
+            this.Run();
+        }
+    }
 }
 

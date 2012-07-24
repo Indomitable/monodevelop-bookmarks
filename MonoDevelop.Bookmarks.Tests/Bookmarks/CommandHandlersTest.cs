@@ -27,8 +27,9 @@ using System;
 using NUnit.Framework;
 using System.Reflection;
 using MonoDevelop.Bookmarks;
+using MonoDevelop.Components.Commands;
 
-namespace MonoDevelop.Bookmarks.Tests.Bookmarks
+namespace MonoDevelop.Bookmarks.Tests
 {
 	[TestFixture]
 	public class CommandHandlersTest
@@ -101,6 +102,25 @@ namespace MonoDevelop.Bookmarks.Tests.Bookmarks
 			ch = new GoToLocalBookmarkHandler9();
 			Assert.AreEqual(9, ch.BookmarkNumber);
 			Assert.AreEqual(BookmarkType.Local, ch.BookmarkType);
+		}
+
+		[Test]
+		public void ClearBookmarks()
+		{
+			ClearAllBookmarksHandler handler = new ClearAllBookmarksHandler();
+			NumberBookmark bookmark = new NumberBookmark("TestPath.cs", 10, 4, 2, BookmarkType.Local);
+			BookmarkService.Instance.AddBookmark(bookmark);
+
+			bookmark = new NumberBookmark("TestPath.cs", 20, 4, 1, BookmarkType.Local);
+			BookmarkService.Instance.AddBookmark(bookmark);
+
+			bookmark = new NumberBookmark("TestPath1SAD.cs", 10, 4, 1, BookmarkType.Global);
+			BookmarkService.Instance.AddBookmark(bookmark);
+
+
+			Assert.AreEqual(3, BookmarkService.Instance.BookmarkCount);
+			handler.RunTest();
+			Assert.AreEqual(0, BookmarkService.Instance.BookmarkCount);
 		}
 	}
 }

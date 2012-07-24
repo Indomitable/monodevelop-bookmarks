@@ -6,7 +6,7 @@
        description = "Numbered Bookmarks, Global Bookmarks, Bookmark Pad"
        category    = "Others"
        copyright = "MIT X11"
-       version = "3.1.0">
+       version = "1.0">
 
 	<Dependencies>
 		<Addin id="::MonoDevelop.Core" version="3.0"/>
@@ -39,6 +39,8 @@
 		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToLocalBookmark8" defaultHandler="MonoDevelop.Bookmarks.GoToLocalBookmarkHandler8" _label = "GoTo Local Bookmark 1" shortcut = "Control+8" />
 		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToLocalBookmark9" defaultHandler="MonoDevelop.Bookmarks.GoToLocalBookmarkHandler9" _label = "GoTo Local Bookmark 1" shortcut = "Control+9" />
 		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToLocalBookmark0" defaultHandler="MonoDevelop.Bookmarks.GoToLocalBookmarkHandler0" _label = "GoTo Local Bookmark 1" shortcut = "Control+0" />
+		
+		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.ClearAllBookmarks" defaultHandler="MonoDevelop.Bookmarks.ClearAllBookmarksHandler" _label = "Clear all" />
 	</Extension>
 	
 	<Extension path = "/MonoDevelop/Ide/StartupHandlers">

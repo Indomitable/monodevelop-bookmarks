@@ -41,6 +41,7 @@ namespace MonoDevelop.Bookmarks
         PadTreeView tree;
         TreeStore store;
         ScrolledWindow control;
+        //Notebook notebook;
         TreeViewState treeState;
         CommandEntrySet menuSet;
         System.Action onBookmarksChanged;
@@ -78,7 +79,8 @@ namespace MonoDevelop.Bookmarks
             menuSet.Add(gotoCmd);
             menuSet.AddSeparator();
             menuSet.AddItem(EditCommands.Delete);
-            //menuSet.AddItem (PadCommands.Clear);
+            menuSet.AddSeparator();
+            menuSet.AddItem (BookmarkCommands.ClearAllBookmarks);
             
             // The breakpoint list
             store = new TreeStore(typeof (string), typeof (string), typeof (object), typeof (string), typeof (string));
@@ -112,12 +114,18 @@ namespace MonoDevelop.Bookmarks
 
             col = tree.AppendColumn(GettextCatalog.GetString("Line Content"), crt, "text", (int)Columns.LineContent);
             col.Resizable = true;
-            
+
+            //notebook = new Notebook();
+            //notebook.TabPos = PositionType.Top;
+
             control = new ScrolledWindow();
             control.ShadowType = ShadowType.None;
             control.Add(tree);
             control.ShowAll();
-            
+            //Label label = new Label("Local bookmarks");
+            //notebook.AppendPage(control, label);
+            //notebook.ShowAll();
+
             UpdateDisplay();
 
             onBookmarksChanged = DispatchService.GuiDispatch<System.Action>(OnBookmarksChanged);
@@ -135,6 +143,7 @@ namespace MonoDevelop.Bookmarks
         {
             get
             {
+                //return notebook;
                 return control;
             }
         }

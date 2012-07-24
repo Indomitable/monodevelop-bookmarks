@@ -70,6 +70,7 @@
     <Compile Include="MonoDevelop.Bookmarks\SetBookmarkHandler.cs" />
     <Compile Include="MonoDevelop.Bookmarks\Init.cs" />
     <Compile Include="MonoDevelop.Bookmarks\CellRendererBookmark.cs" />
+    <Compile Include="MonoDevelop.Bookmarks\ClearAllBookmarksHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MonoDevelop.Bookmarks.addin.xml">
@@ -100,5 +101,10 @@
       <Project>{27096E7F-C91C-4AC6-B289-6897A701DF21}</Project>
       <Name>MonoDevelop.Ide</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Link>README.md</Link>
+    </None>
   </ItemGroup>
 </Project>
