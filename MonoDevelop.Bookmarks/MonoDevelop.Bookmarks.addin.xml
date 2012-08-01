@@ -6,7 +6,7 @@
        description = "Numbered Bookmarks, Global Bookmarks, Bookmark Pad"
        category    = "Others"
        copyright = "MIT X11"
-       version = "1.0">
+       version = "1.1">
 
 	<Dependencies>
 		<Addin id="::MonoDevelop.Core" version="3.0"/>
