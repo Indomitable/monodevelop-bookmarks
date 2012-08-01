@@ -30,15 +30,15 @@
 		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.SetLocalBookmark0" defaultHandler="MonoDevelop.Bookmarks.SetLocalBookmarkHandler0" _label = "Set Local Bookmark 0" shortcut = "Control+Shift+0" />
 
 		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToLocalBookmark1" defaultHandler="MonoDevelop.Bookmarks.GoToLocalBookmarkHandler1" _label = "GoTo Local Bookmark 1" shortcut = "Control+1" />
-		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToLocalBookmark2" defaultHandler="MonoDevelop.Bookmarks.GoToLocalBookmarkHandler2" _label = "GoTo Local Bookmark 1" shortcut = "Control+2" />
-		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToLocalBookmark3" defaultHandler="MonoDevelop.Bookmarks.GoToLocalBookmarkHandler3" _label = "GoTo Local Bookmark 1" shortcut = "Control+3" />
-		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToLocalBookmark4" defaultHandler="MonoDevelop.Bookmarks.GoToLocalBookmarkHandler4" _label = "GoTo Local Bookmark 1" shortcut = "Control+4" />
-		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToLocalBookmark5" defaultHandler="MonoDevelop.Bookmarks.GoToLocalBookmarkHandler5" _label = "GoTo Local Bookmark 1" shortcut = "Control+5" />
-		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToLocalBookmark6" defaultHandler="MonoDevelop.Bookmarks.GoToLocalBookmarkHandler6" _label = "GoTo Local Bookmark 1" shortcut = "Control+6" />
-		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToLocalBookmark7" defaultHandler="MonoDevelop.Bookmarks.GoToLocalBookmarkHandler7" _label = "GoTo Local Bookmark 1" shortcut = "Control+7" />
-		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToLocalBookmark8" defaultHandler="MonoDevelop.Bookmarks.GoToLocalBookmarkHandler8" _label = "GoTo Local Bookmark 1" shortcut = "Control+8" />
-		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToLocalBookmark9" defaultHandler="MonoDevelop.Bookmarks.GoToLocalBookmarkHandler9" _label = "GoTo Local Bookmark 1" shortcut = "Control+9" />
-		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToLocalBookmark0" defaultHandler="MonoDevelop.Bookmarks.GoToLocalBookmarkHandler0" _label = "GoTo Local Bookmark 1" shortcut = "Control+0" />
+		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToLocalBookmark2" defaultHandler="MonoDevelop.Bookmarks.GoToLocalBookmarkHandler2" _label = "GoTo Local Bookmark 2" shortcut = "Control+2" />
+		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToLocalBookmark3" defaultHandler="MonoDevelop.Bookmarks.GoToLocalBookmarkHandler3" _label = "GoTo Local Bookmark 3" shortcut = "Control+3" />
+		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToLocalBookmark4" defaultHandler="MonoDevelop.Bookmarks.GoToLocalBookmarkHandler4" _label = "GoTo Local Bookmark 4" shortcut = "Control+4" />
+		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToLocalBookmark5" defaultHandler="MonoDevelop.Bookmarks.GoToLocalBookmarkHandler5" _label = "GoTo Local Bookmark 5" shortcut = "Control+5" />
+		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToLocalBookmark6" defaultHandler="MonoDevelop.Bookmarks.GoToLocalBookmarkHandler6" _label = "GoTo Local Bookmark 6" shortcut = "Control+6" />
+		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToLocalBookmark7" defaultHandler="MonoDevelop.Bookmarks.GoToLocalBookmarkHandler7" _label = "GoTo Local Bookmark 7" shortcut = "Control+7" />
+		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToLocalBookmark8" defaultHandler="MonoDevelop.Bookmarks.GoToLocalBookmarkHandler8" _label = "GoTo Local Bookmark 8" shortcut = "Control+8" />
+		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToLocalBookmark9" defaultHandler="MonoDevelop.Bookmarks.GoToLocalBookmarkHandler9" _label = "GoTo Local Bookmark 9" shortcut = "Control+9" />
+		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToLocalBookmark0" defaultHandler="MonoDevelop.Bookmarks.GoToLocalBookmarkHandler0" _label = "GoTo Local Bookmark 0" />
 		
 		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.ClearAllBookmarks" defaultHandler="MonoDevelop.Bookmarks.ClearAllBookmarksHandler" _label = "Clear all" />
 	</Extension>
