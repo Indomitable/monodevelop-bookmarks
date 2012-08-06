@@ -121,5 +121,59 @@ namespace MonoDevelop.Bookmarks
     }
 
     #endregion
+
+    #region Set Global BookMark Handler
+    
+    public class SetGlobalBookmarkHandler0 : SetGlobalBookmarkHandler
+    {
+        internal protected override int BookmarkNumber { get { return 0; } }
+    }
+    
+    public class SetGlobalBookmarkHandler1 : SetGlobalBookmarkHandler
+    {
+        internal protected override int BookmarkNumber { get { return 1; } }
+    }
+    
+    public class SetGlobalBookmarkHandler2 : SetGlobalBookmarkHandler
+    {
+        internal protected override int BookmarkNumber { get { return 2; } }
+    }
+    
+    public class SetGlobalBookmarkHandler3 : SetGlobalBookmarkHandler
+    {
+        internal protected override int BookmarkNumber { get { return 3; } }
+    }
+    
+    public class SetGlobalBookmarkHandler4 : SetGlobalBookmarkHandler
+    {
+        internal protected override int BookmarkNumber { get { return 4; } }
+    }
+    
+    public class SetGlobalBookmarkHandler5 : SetGlobalBookmarkHandler
+    {
+        internal protected override int BookmarkNumber { get { return 5; } }
+    }
+    
+    public class SetGlobalBookmarkHandler6 : SetGlobalBookmarkHandler
+    {
+        internal protected override int BookmarkNumber { get { return 6; } }
+    }
+    
+    public class SetGlobalBookmarkHandler7 : SetGlobalBookmarkHandler
+    {
+        internal protected override int BookmarkNumber { get { return 7; } }
+    }
+    
+    public class SetGlobalBookmarkHandler8 : SetGlobalBookmarkHandler
+    {
+        internal protected override int BookmarkNumber { get { return 8; } }
+    }
+    
+    public class SetGlobalBookmarkHandler9 : SetGlobalBookmarkHandler
+    {
+        internal protected override int BookmarkNumber { get { return 9; } }
+    }
+    
+#endregion
 }
 

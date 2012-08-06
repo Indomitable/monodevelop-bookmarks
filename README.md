@@ -3,7 +3,10 @@ monodevelop-bookmarks
 
 Monodevelop extension for bookmarks.
 
+1. Local bookmarks - for current file only:
+
 Use Ctrl + Shift + N to set the bookmark.
 Use Ctrl + N to go to bookmark. 
 
-Currently only local bookmarks can be set, but bookmark pad gives ability go jump to bookmarks in different files.
+2. Global bookmarks for all files. 
+Please set desired shortcuts.

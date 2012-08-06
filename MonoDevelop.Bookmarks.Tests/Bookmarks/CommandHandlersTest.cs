@@ -72,7 +72,7 @@ namespace MonoDevelop.Bookmarks.Tests
 		[Test]
 		public void GoToLocalCommandNumbers()
 		{
-			GoToBookmarkHandler ch = new GoToLocalBookmarkHandler0();
+			GoToLocalBookmarkHandler ch = new GoToLocalBookmarkHandler0();
 			Assert.AreEqual(0, ch.BookmarkNumber);
 			Assert.AreEqual(BookmarkType.Local, ch.BookmarkType);
 			ch = new GoToLocalBookmarkHandler1();
@@ -102,6 +102,41 @@ namespace MonoDevelop.Bookmarks.Tests
 			ch = new GoToLocalBookmarkHandler9();
 			Assert.AreEqual(9, ch.BookmarkNumber);
 			Assert.AreEqual(BookmarkType.Local, ch.BookmarkType);
+		}
+
+		[Test]
+		public void GoToGlobalCommandNumbers()
+		{
+			GoToGlobalBookmarkHandler ch = new GoToGlobalBookmarkHandler0();
+			Assert.AreEqual(0, ch.BookmarkNumber);
+			Assert.AreEqual(BookmarkType.Global, ch.BookmarkType);
+			ch = new GoToGlobalBookmarkHandler1();
+			Assert.AreEqual(1, ch.BookmarkNumber);
+			Assert.AreEqual(BookmarkType.Global, ch.BookmarkType);
+			ch = new GoToGlobalBookmarkHandler2();
+			Assert.AreEqual(2, ch.BookmarkNumber);
+			Assert.AreEqual(BookmarkType.Global, ch.BookmarkType);
+			ch = new GoToGlobalBookmarkHandler3();
+			Assert.AreEqual(3, ch.BookmarkNumber);
+			Assert.AreEqual(BookmarkType.Global, ch.BookmarkType);
+			ch = new GoToGlobalBookmarkHandler4();
+			Assert.AreEqual(4, ch.BookmarkNumber);
+			Assert.AreEqual(BookmarkType.Global, ch.BookmarkType);
+			ch = new GoToGlobalBookmarkHandler5();
+			Assert.AreEqual(5, ch.BookmarkNumber);
+			Assert.AreEqual(BookmarkType.Global, ch.BookmarkType);
+			ch = new GoToGlobalBookmarkHandler6();
+			Assert.AreEqual(6, ch.BookmarkNumber);
+			Assert.AreEqual(BookmarkType.Global, ch.BookmarkType);
+			ch = new GoToGlobalBookmarkHandler7();
+			Assert.AreEqual(7, ch.BookmarkNumber);
+			Assert.AreEqual(BookmarkType.Global, ch.BookmarkType);
+			ch = new GoToGlobalBookmarkHandler8();
+			Assert.AreEqual(8, ch.BookmarkNumber);
+			Assert.AreEqual(BookmarkType.Global, ch.BookmarkType);
+			ch = new GoToGlobalBookmarkHandler9();
+			Assert.AreEqual(9, ch.BookmarkNumber);
+			Assert.AreEqual(BookmarkType.Global, ch.BookmarkType);
 		}
 
 		[Test]

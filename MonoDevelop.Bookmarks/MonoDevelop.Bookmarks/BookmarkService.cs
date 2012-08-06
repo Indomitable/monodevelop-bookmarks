@@ -55,6 +55,7 @@ namespace MonoDevelop.Bookmarks
                 IdeApp.Workspace.LoadingUserPreferences += OnLoadUserPrefs;
                 IdeApp.Workspace.LastWorkspaceItemClosed += OnSolutionClosed;
                 IdeApp.Workbench.DocumentOpened += OnDocumentOpened;
+				IdeApp.Workbench.ActiveDocumentChanged += (sender, e) => RaiseFileChange();
             };
         }  
 
@@ -92,6 +93,7 @@ namespace MonoDevelop.Bookmarks
         private void OnDocumentOpened(object sender, MonoDevelop.Ide.Gui.DocumentEventArgs e)
         {
             bookmarks.InitBookmarksForDocument(e.Document);
+			RaiseFileChange();
         }
 
         #endregion
@@ -158,6 +160,12 @@ namespace MonoDevelop.Bookmarks
             if (OnBookmarksChange != null)
                 OnBookmarksChange();
         }
+
+		private void RaiseFileChange()
+		{
+			if (OnFileChage != null)
+				OnFileChage();
+		}
 
         #endregion
 
@@ -290,9 +298,14 @@ namespace MonoDevelop.Bookmarks
 
         public event Action OnBookmarksChange;
 
+		public event Action OnFileChage;
+
         public IEnumerable<NumberBookmark> Bookmarks
         {
-            get { return bookmarks.OrderBy(x => x.FileName); }
+			get
+			{
+				return bookmarks;
+			}
         }
     }
 }

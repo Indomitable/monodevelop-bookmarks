@@ -32,11 +32,11 @@ using MonoDevelop.Ide.Gui;
 
 namespace MonoDevelop.Bookmarks
 {
-	public abstract class GoToBookmarkHandler : CommandHandler
+	public abstract class GoToLocalBookmarkHandler : CommandHandler
 	{
 	    internal protected abstract int BookmarkNumber { get; }
 		
-        internal protected abstract BookmarkType BookmarkType { get; }
+        internal protected BookmarkType BookmarkType { get { return BookmarkType.Local; } }
 		
 		protected override void Run ()
 		{
@@ -62,22 +62,11 @@ namespace MonoDevelop.Bookmarks
 
 		private Tuple<DocumentLine, NumberBookmark> GetLineWithBookmark(TextEditorData editor)
 		{
-            var bookmark = BookmarkType == BookmarkType.Local ? BookmarkService.Instance.GetBookmarkLocal(editor.FileName, this.BookmarkNumber) :
-                                                                BookmarkService.Instance.GetBookmarkGlobal(this.BookmarkNumber);
+            var bookmark = BookmarkService.Instance.GetBookmarkLocal(editor.FileName, this.BookmarkNumber);
             if (bookmark == null)
                 return null;
             return new Tuple<DocumentLine, NumberBookmark>(editor.GetLine(bookmark.LineNumber), bookmark);
 		}
-	}
-
-	public abstract class GoToLocalBookmarkHandler : GoToBookmarkHandler
-	{
-        internal protected override BookmarkType BookmarkType { get { return BookmarkType.Local; } }
-	}
-
-	public abstract class GoToGlobalBookmarkHandler : GoToBookmarkHandler
-	{
-        internal protected override BookmarkType BookmarkType { get { return BookmarkType.Global; } }
 	}
 
 	#region Go To Local BookMark Handler
@@ -133,5 +122,6 @@ namespace MonoDevelop.Bookmarks
 	}
 
 	#endregion
+
 }
 

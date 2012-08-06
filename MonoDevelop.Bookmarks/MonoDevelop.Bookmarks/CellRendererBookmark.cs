@@ -47,7 +47,13 @@ namespace MonoDevelop.Bookmarks
                 int width = 14;
                 int height = 12;// 12;
 
-                DrawRoundRectangle(context, x, y, r, width, height);
+				var bookmarkCode = this.StockId;
+				var bookmarkType = bookmarkCode.Substring(12, 1);
+				if (bookmarkType == "l")
+                	DrawRoundRectangle(context, x, y, r, width, height);
+				else
+					DrawCircle (context, x + (width / 2), y + (height / 2), 6);
+
                 Cairo.Color color1 = ColorScheme.ToCairoColor(new Gdk.Color(255, 255, 255));
                 Cairo.Color color2 = ColorScheme.ToCairoColor(new Gdk.Color(105, 156, 235));
 
@@ -66,9 +72,7 @@ namespace MonoDevelop.Bookmarks
                     context.Stroke();
                 }
 
-                var bookmarkCode = this.StockId;
-                var bookmarkNumber = bookmarkCode.Substring(bookmarkCode.LastIndexOf("-") + 1);
-
+				var bookmarkNumber = bookmarkCode.Substring(bookmarkCode.LastIndexOf("-") + 1);
                 context.Color = new Cairo.Color(0, 0, 0);
                 context.SelectFontFace(DesktopService.DefaultMonospaceFont, Cairo.FontSlant.Normal, Cairo.FontWeight.Bold); 
                 context.SetFontSize(12);
@@ -110,6 +114,11 @@ namespace MonoDevelop.Bookmarks
 
             cr.ClosePath();
         }
+
+		public static void DrawCircle (Cairo.Context cr, double x, double y, double r)
+		{
+			cr.Arc (x, y, r, 0, 2 * Math.PI);
+		}
     }
 }
 

@@ -39,15 +39,18 @@ namespace MonoDevelop.Bookmarks
 			Bookmark = bookmark;
 		}
 
-		#region IIconBarMarker implementation
+        #region IIconBarMarker implementation
 
 		public void DrawIcon (TextEditor editor, Cairo.Context cr, DocumentLine lineSegment, int lineNumber, double x, double y, double width, double height)
 		{
-            if (BookmarkService.Instance.CheckLineForBookmark(editor.FileName, lineSegment.LineNumber)) {
+			if (BookmarkService.Instance.CheckLineForBookmark (editor.FileName, lineSegment.LineNumber)) {
 				Cairo.Color color1 = editor.ColorStyle.BookmarkColor1;
 				Cairo.Color color2 = editor.ColorStyle.BookmarkColor2;
-				
-				DrawRoundRectangle (cr, x + 1, y + 1, 8, width - 4, height - 4);
+                
+				if (Bookmark.BookmarkType == BookmarkType.Local)
+					DrawRoundRectangle (cr, x + 1, y + 1, 8, width - 4, height - 4);
+				else
+					DrawCircle (cr, x + (width / 2), y + (height / 2), 6);
 
 
 				using (var pat = new Cairo.LinearGradient (x + width / 4, y, x + width / 2, y + height - 4)) {
@@ -56,7 +59,7 @@ namespace MonoDevelop.Bookmarks
 					cr.Pattern = pat;
 					cr.FillPreserve ();
 				}
-				
+                
 				using (var pat = new Cairo.LinearGradient (x, y + height, x + width, y)) {
 					pat.AddColorStop (0, color2);
 					//pat.AddColorStop (1, color1);
@@ -85,29 +88,29 @@ namespace MonoDevelop.Bookmarks
 		{
 		}
 
-		#endregion
+        #endregion
 
 		public static void DrawRoundRectangle (Cairo.Context cr, double x, double y, double r, double w, double h)
 		{
 			const double ARC_TO_BEZIER = 0.55228475;
 			double radius_x = r;
 			double radius_y = r / 4;
-			
+            
 			if (radius_x > w - radius_x)
 				radius_x = w / 2;
-			
+            
 			if (radius_y > h - radius_y)
 				radius_y = h / 2;
-			
+            
 			double c1 = ARC_TO_BEZIER * radius_x;
 			double c2 = ARC_TO_BEZIER * radius_y;
-			
+            
 			cr.NewPath ();
 			cr.MoveTo (x + radius_x, y);
 			cr.RelLineTo (w - 2 * radius_x, 0.0);
 			cr.RelCurveTo (c1, 0.0, 
-			               radius_x, c2, 
-			               radius_x, radius_y);
+                           radius_x, c2, 
+                           radius_x, radius_y);
 			cr.RelLineTo (0, h - 2 * radius_y);
 			cr.RelCurveTo (0.0, c2, c1 - radius_x, radius_y, -radius_x, radius_y);
 			cr.RelLineTo (-w + 2 * radius_x, 0);
@@ -115,6 +118,11 @@ namespace MonoDevelop.Bookmarks
 			cr.RelLineTo (0, -h + 2 * radius_y);
 			cr.RelCurveTo (0.0, -c2, radius_x - c1, -radius_y, radius_x, -radius_y);
 			cr.ClosePath ();
+		}
+
+		public static void DrawCircle (Cairo.Context cr, double x, double y, double r)
+		{
+			cr.Arc (x, y, r, 0, 2 * Math.PI);
 		}
 	}
 }

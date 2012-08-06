@@ -6,7 +6,7 @@
        description = "Numbered Bookmarks, Global Bookmarks, Bookmark Pad"
        category    = "Others"
        copyright = "MIT X11"
-       version = "1.1">
+       version = "1.2">
 
 	<Dependencies>
 		<Addin id="::MonoDevelop.Core" version="3.0"/>
@@ -29,6 +29,17 @@
 		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.SetLocalBookmark9" defaultHandler="MonoDevelop.Bookmarks.SetLocalBookmarkHandler9" _label = "Set Local Bookmark 9" shortcut = "Control+Shift+9" />
 		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.SetLocalBookmark0" defaultHandler="MonoDevelop.Bookmarks.SetLocalBookmarkHandler0" _label = "Set Local Bookmark 0" shortcut = "Control+Shift+0" />
 
+		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.SetGlobalBookmark1" defaultHandler="MonoDevelop.Bookmarks.SetGlobalBookmarkHandler1" _label = "Set Global Bookmark 1" />
+		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.SetGlobalBookmark2" defaultHandler="MonoDevelop.Bookmarks.SetGlobalBookmarkHandler2" _label = "Set Global Bookmark 2" />
+		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.SetGlobalBookmark3" defaultHandler="MonoDevelop.Bookmarks.SetGlobalBookmarkHandler3" _label = "Set Global Bookmark 3" />
+		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.SetGlobalBookmark4" defaultHandler="MonoDevelop.Bookmarks.SetGlobalBookmarkHandler4" _label = "Set Global Bookmark 4" />
+		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.SetGlobalBookmark5" defaultHandler="MonoDevelop.Bookmarks.SetGlobalBookmarkHandler5" _label = "Set Global Bookmark 5" />
+		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.SetGlobalBookmark6" defaultHandler="MonoDevelop.Bookmarks.SetGlobalBookmarkHandler6" _label = "Set Global Bookmark 6" />
+		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.SetGlobalBookmark7" defaultHandler="MonoDevelop.Bookmarks.SetGlobalBookmarkHandler7" _label = "Set Global Bookmark 7" />
+		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.SetGlobalBookmark8" defaultHandler="MonoDevelop.Bookmarks.SetGlobalBookmarkHandler8" _label = "Set Global Bookmark 8" />
+		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.SetGlobalBookmark9" defaultHandler="MonoDevelop.Bookmarks.SetGlobalBookmarkHandler9" _label = "Set Global Bookmark 9" />
+		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.SetGlobalBookmark0" defaultHandler="MonoDevelop.Bookmarks.SetGlobalBookmarkHandler0" _label = "Set Global Bookmark 0" />
+
 		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToLocalBookmark1" defaultHandler="MonoDevelop.Bookmarks.GoToLocalBookmarkHandler1" _label = "GoTo Local Bookmark 1" shortcut = "Control+1" />
 		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToLocalBookmark2" defaultHandler="MonoDevelop.Bookmarks.GoToLocalBookmarkHandler2" _label = "GoTo Local Bookmark 2" shortcut = "Control+2" />
 		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToLocalBookmark3" defaultHandler="MonoDevelop.Bookmarks.GoToLocalBookmarkHandler3" _label = "GoTo Local Bookmark 3" shortcut = "Control+3" />
@@ -39,6 +50,17 @@
 		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToLocalBookmark8" defaultHandler="MonoDevelop.Bookmarks.GoToLocalBookmarkHandler8" _label = "GoTo Local Bookmark 8" shortcut = "Control+8" />
 		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToLocalBookmark9" defaultHandler="MonoDevelop.Bookmarks.GoToLocalBookmarkHandler9" _label = "GoTo Local Bookmark 9" shortcut = "Control+9" />
 		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToLocalBookmark0" defaultHandler="MonoDevelop.Bookmarks.GoToLocalBookmarkHandler0" _label = "GoTo Local Bookmark 0" />
+		
+		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToGlobalBookmark1" defaultHandler="MonoDevelop.Bookmarks.GoToGlobalBookmarkHandler1" _label = "GoTo Global Bookmark 1" />
+		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToGlobalBookmark2" defaultHandler="MonoDevelop.Bookmarks.GoToGlobalBookmarkHandler2" _label = "GoTo Global Bookmark 2" />
+		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToGlobalBookmark3" defaultHandler="MonoDevelop.Bookmarks.GoToGlobalBookmarkHandler3" _label = "GoTo Global Bookmark 3" />
+		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToGlobalBookmark4" defaultHandler="MonoDevelop.Bookmarks.GoToGlobalBookmarkHandler4" _label = "GoTo Global Bookmark 4" />
+		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToGlobalBookmark5" defaultHandler="MonoDevelop.Bookmarks.GoToGlobalBookmarkHandler5" _label = "GoTo Global Bookmark 5" />
+		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToGlobalBookmark6" defaultHandler="MonoDevelop.Bookmarks.GoToGlobalBookmarkHandler6" _label = "GoTo Global Bookmark 6" />
+		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToGlobalBookmark7" defaultHandler="MonoDevelop.Bookmarks.GoToGlobalBookmarkHandler7" _label = "GoTo Global Bookmark 7" />
+		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToGlobalBookmark8" defaultHandler="MonoDevelop.Bookmarks.GoToGlobalBookmarkHandler8" _label = "GoTo Global Bookmark 8" />
+		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToGlobalBookmark9" defaultHandler="MonoDevelop.Bookmarks.GoToGlobalBookmarkHandler9" _label = "GoTo Global Bookmark 9" />
+		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.GoToGlobalBookmark0" defaultHandler="MonoDevelop.Bookmarks.GoToGlobalBookmarkHandler0" _label = "GoTo Global Bookmark 0" />
 		
 		<Command id = "MonoDevelop.Bookmarks.BookmarkCommands.ClearAllBookmarks" defaultHandler="MonoDevelop.Bookmarks.ClearAllBookmarksHandler" _label = "Clear all" />
 	</Extension>
