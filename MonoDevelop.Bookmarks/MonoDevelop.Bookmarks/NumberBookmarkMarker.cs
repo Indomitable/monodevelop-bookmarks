@@ -30,7 +30,7 @@ using MonoDevelop.Ide;
 
 namespace MonoDevelop.Bookmarks
 {
-	public class NumberBookmarkMarker : TextMarker, IIconBarMarker
+	public class NumberBookmarkMarker : TextLineMarker, IIconBarMarker
 	{
 		public NumberBookmark Bookmark { get; set; }
 
@@ -44,8 +44,8 @@ namespace MonoDevelop.Bookmarks
 		public void DrawIcon (TextEditor editor, Cairo.Context cr, DocumentLine lineSegment, int lineNumber, double x, double y, double width, double height)
 		{
 			if (BookmarkService.Instance.CheckLineForBookmark (editor.FileName, lineSegment.LineNumber)) {
-				Cairo.Color color1 = editor.ColorStyle.BookmarkColor1;
-				Cairo.Color color2 = editor.ColorStyle.BookmarkColor2;
+				Cairo.Color color1 = editor.ColorStyle.Bookmarks.Color;
+				Cairo.Color color2 = editor.ColorStyle.Bookmarks.SecondColor;
                 
 				if (Bookmark.BookmarkType == BookmarkType.Local)
 					DrawRoundRectangle (cr, x + 1, y + 1, 8, width - 4, height - 4);

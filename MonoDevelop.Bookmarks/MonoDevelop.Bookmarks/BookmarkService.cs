@@ -25,11 +25,11 @@
 // THE SOFTWARE.
 using System;
 using System.Linq;
-using MonoDevelop.Projects.Text;
 using MonoDevelop.Ide;
 using System.Xml;
 using Mono.TextEditor;
 using System.Collections.Generic;
+using MonoDevelop.Ide.TextEditing;
 
 namespace MonoDevelop.Bookmarks
 {
@@ -48,7 +48,7 @@ namespace MonoDevelop.Bookmarks
 
         public void Init()
         {
-            TextFileService.LineCountChanged += OnLineCountChanged;
+			TextEditorService.LineCountChanged += OnLineCountChanged;
             IdeApp.Initialized += delegate
             {
                 IdeApp.Workspace.StoringUserPreferences += OnStoreUserPrefs;

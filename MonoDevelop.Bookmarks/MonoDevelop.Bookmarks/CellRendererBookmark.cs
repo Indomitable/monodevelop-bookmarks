@@ -26,7 +26,7 @@
 using System;
 using Gtk;
 using MonoDevelop.Ide;
-using Mono.TextEditor.Highlighting;
+using MonoDevelop.Components;
 
 namespace MonoDevelop.Bookmarks
 {
@@ -54,8 +54,8 @@ namespace MonoDevelop.Bookmarks
 				else
 					DrawCircle (context, x + (width / 2), y + (height / 2), 6);
 
-                Cairo.Color color1 = ColorScheme.ToCairoColor(new Gdk.Color(255, 255, 255));
-                Cairo.Color color2 = ColorScheme.ToCairoColor(new Gdk.Color(105, 156, 235));
+				Cairo.Color color1 = GtkUtil.ToCairoColor(new Gdk.Color(255, 255, 255));
+				Cairo.Color color2 = GtkUtil.ToCairoColor(new Gdk.Color(105, 156, 235));
 
                 using (var pat = new Cairo.LinearGradient (x + width / 4, y, x + width / 2, y + height - 4))
                 {

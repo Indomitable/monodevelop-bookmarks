@@ -24,13 +24,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Linq;
 using System.Collections.Generic;
-using System.Xml;
-using MonoDevelop.Ide.Gui;
-using Mono.TextEditor;
-using MonoDevelop.Projects.Text;
 using System.IO;
+using System.Linq;
+using System.Xml;
+using Mono.TextEditor;
+using MonoDevelop.Ide.Gui;
+using MonoDevelop.Ide.TextEditing;
 
 namespace MonoDevelop.Bookmarks
 {
