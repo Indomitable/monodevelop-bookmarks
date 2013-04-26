@@ -50,8 +50,13 @@ namespace MonoDevelop.Bookmarks
 		protected override void Update (CommandInfo info)
 		{
 			var activeDocument = IdeApp.Workbench.ActiveDocument;
+			if (activeDocument == null)
+			{
+				info.Enabled = false;
+				return;
+			}
 			var textEditor = activeDocument.GetContent<ITextEditorDataProvider>();
-			if (activeDocument == null || textEditor == null)
+			if (textEditor == null)
 			{
 				info.Enabled = false;
 				return;
