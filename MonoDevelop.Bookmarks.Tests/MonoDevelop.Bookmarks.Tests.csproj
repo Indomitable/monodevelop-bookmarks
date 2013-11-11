@@ -9,6 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>MonoDevelop.Bookmarks.Tests</RootNamespace>
     <AssemblyName>MonoDevelop.Bookmarks.Tests</AssemblyName>
+    <ReleaseVersion>1.4</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>

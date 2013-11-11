@@ -216,5 +216,6 @@ Global
 		$24.NamingStyle = PascalCase
 		$24.IncludeInstanceMembers = True
 		$24.IncludeStaticEntities = True
+		version = 1.4
 	EndGlobalSection
 EndGlobal
